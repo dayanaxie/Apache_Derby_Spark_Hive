@@ -11,3 +11,7 @@ then there you can use:
 also 
 
     docker compose down --volumes --remove-orphans
+
+    docker compose ps
+
+    docker exec -it spark-master /opt/spark/bin/spark-submit /opt/spark-apps/main.py
