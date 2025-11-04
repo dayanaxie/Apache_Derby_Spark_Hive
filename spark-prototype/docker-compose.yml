@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   spark-master:
     image: apache/spark:latest
@@ -28,12 +30,23 @@ services:
     depends_on:
       - spark-master
     volumes:
-      - ./data:/opt/spark-data 
-      - ./app:/app             
+      - ./data:/opt/spark-data
+      - ./app:/app
     environment:
       - SPARK_MASTER_URL=spark://spark-master:7077
     ports:
       - "8000:8000"
+    networks:
+      - spark-net
+
+  spark-frontend:
+    build:
+      context: ./frontend
+    container_name: spark-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - spark-api
     networks:
       - spark-net
 

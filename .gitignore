@@ -1,0 +1,59 @@
+# =======================================
+# General
+# =======================================
+*.log
+*.tmp
+*.swp
+*.bak
+.DS_Store
+Thumbs.db
+
+# =======================================
+# Python / FastAPI
+# =======================================
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+.eggs/
+.env
+.venv
+.env.local
+venv/
+pip-log.txt
+
+# =======================================
+# Node / React Frontend
+# =======================================
+frontend/node_modules/
+frontend/build/
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# =======================================
+# Docker
+# =======================================
+**/Dockerfile~
+**/docker-compose.override.yml
+**/.docker/
+**/.dockerignore
+*.pid
+
+# =======================================
+# Spark / Data
+# =======================================
+data/*.csv
+!data/example.csv
+spark-warehouse/
+metastore_db/
+
+# =======================================
+# IDE / VSCode / Misc
+# =======================================
+.vscode/
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace

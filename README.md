@@ -8,6 +8,8 @@ first of all, run the following once:
 
     docker compose build spark-api
 
+    docker compose build spark-frontend
+
 then there you can use:
 
     docker compose up -d
