@@ -4,6 +4,10 @@ To try de project you must to move:
 
     cd spark-prototype
 
+first of all, run the following once:
+
+    docker compose build spark-api
+
 then there you can use:
 
     docker compose up -d

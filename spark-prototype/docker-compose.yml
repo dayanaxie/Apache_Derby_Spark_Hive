@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   spark-master:
     image: apache/spark:latest
@@ -10,9 +8,6 @@ services:
     ports:
       - "8080:8080"
       - "7077:7077"
-    volumes:
-      - ./app:/opt/spark-apps
-      - ./data:/opt/spark-data
     networks:
       - spark-net
 
@@ -24,9 +19,21 @@ services:
     command: >
       bash -c "/opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker
       spark://spark-master:7077 --webui-port 8081"
+    networks:
+      - spark-net
+
+  spark-api:
+    build: .
+    container_name: spark-api
+    depends_on:
+      - spark-master
+    volumes:
+      - ./data:/opt/spark-data 
+      - ./app:/app             
     environment:
-      - SPARK_WORKER_CORES=1
-      - SPARK_WORKER_MEMORY=1G
+      - SPARK_MASTER_URL=spark://spark-master:7077
+    ports:
+      - "8000:8000"
     networks:
       - spark-net
 
